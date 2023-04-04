@@ -1,0 +1,7 @@
+name: CavesOresGenerator
+version: '${project.version}'
+main: de.tomstahlberg.cavesoresgenerator.CavesOresGenerator
+api-version: 1.19
+commands:
+  cog:
+    description: plugin main command
