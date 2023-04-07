@@ -9,16 +9,23 @@ import java.util.List;
 
 public class CheckForLocationBlock {
     private List<Location> coalLocations;
+    private List<Location> copperLocations;
     private List<Location> ironLocations;
     private List<Location> goldLocations;
     private List<Location> redstoneLocations;
     private List<Location> lapisLocations;
     private List<Location> diamondLocations;
+    private List<Location> emeraldLocations;
     public CheckForLocationBlock(){
         try{
             this.coalLocations = (List<Location>) CavesOresGenerator.locations.getList("coal");
         }catch(Exception e){
             this.coalLocations = new ArrayList<Location>();
+        }
+        try{
+            this.copperLocations = (List<Location>) CavesOresGenerator.locations.getList("copper");
+        }catch(Exception e){
+            this.copperLocations = new ArrayList<Location>();
         }
         try{
             this.ironLocations = (List<Location>) CavesOresGenerator.locations.getList("iron");
@@ -45,11 +52,22 @@ public class CheckForLocationBlock {
         }catch(Exception e){
             this.diamondLocations = new ArrayList<Location>();
         }
+        try{
+            this.emeraldLocations = (List<Location>) CavesOresGenerator.locations.getList("emerald");
+        }catch(Exception e){
+            this.emeraldLocations = new ArrayList<Location>();
+        }
     }
     public Boolean check(Location location){
         boolean is = false;
 
         for(Location loc : coalLocations){
+            if(loc.equals(location)){
+                is = true;
+                break;
+            }
+        }
+        for(Location loc : copperLocations){
             if(loc.equals(location)){
                 is = true;
                 break;
@@ -80,6 +98,12 @@ public class CheckForLocationBlock {
             }
         }
         for(Location loc : diamondLocations){
+            if(loc.equals(location)){
+                is = true;
+                break;
+            }
+        }
+        for(Location loc : emeraldLocations){
             if(loc.equals(location)){
                 is = true;
                 break;

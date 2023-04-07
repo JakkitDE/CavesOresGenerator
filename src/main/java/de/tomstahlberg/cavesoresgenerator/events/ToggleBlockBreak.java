@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class ToggleBlockBreak implements Listener {
@@ -23,6 +24,10 @@ public class ToggleBlockBreak implements Listener {
                     if(player.getInventory().getItemInMainHand().getType() == Material.COAL_ORE){
                         insertData(player,"coal", event.getBlock().getLocation());
                         event.getBlock().setType(Material.COAL_ORE);
+                        event.setCancelled(true);
+                    }else if(player.getInventory().getItemInMainHand().getType() == Material.COPPER_ORE){
+                        insertData(player,"copper", event.getBlock().getLocation());
+                        event.getBlock().setType(Material.COPPER_ORE);
                         event.setCancelled(true);
                     }else if(player.getInventory().getItemInMainHand().getType() == Material.IRON_ORE){
                         insertData(player,"iron", event.getBlock().getLocation());
@@ -44,26 +49,29 @@ public class ToggleBlockBreak implements Listener {
                         insertData(player,"diamond", event.getBlock().getLocation());
                         event.getBlock().setType(Material.DEEPSLATE_DIAMOND_ORE);
                         event.setCancelled(true);
+                    }else if(player.getInventory().getItemInMainHand().getType() == Material.DEEPSLATE_EMERALD_ORE){
+                        insertData(player,"emerald", event.getBlock().getLocation());
+                        event.getBlock().setType(Material.DEEPSLATE_EMERALD_ORE);
+                        event.setCancelled(true);
                     }
 
-                }else{
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&6&lGolden&3&lSky &8x &cKeine Rechte."));
-                    event.setCancelled(true);
                 }
             }
         }
     }
 
     private void insertData(Player player, String type, Location loc){
-        List<Location> locationsList;
-        try{
-            locationsList = (List<Location>) CavesOresGenerator.locations.getList(type);
-        }catch(Exception e){
-            locationsList = new ArrayList<Location>();
-        }
+        List<Location> locationsList = new ArrayList<Location>((Collection<? extends Location>) CavesOresGenerator.locations.getList(type));
         if(!locationsList.contains(loc)){
             locationsList.add(loc);
             CavesOresGenerator.locations.set(type, locationsList);
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&6&lGolden&3&lSky &8x " +
+                    "&e"+loc.getX()+
+                    " "+loc.getY()+
+                    " "+loc.getZ()+
+                    " &7gesetzt für "+
+                    "&e"+type+
+                    "&7."));
         }else{
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&6&lGolden&3&lSky &8x &cDieser Block ist bereits registriert. Rechtsklick zum Entfernen."));
         }

@@ -11,6 +11,8 @@ public class PlaceMaterialElsewhere {
     public PlaceMaterialElsewhere(Material material){
         if(material == Material.COAL_ORE){
             setCoalOre();
+        }else if(material == Material.COPPER_ORE){
+            setCopperOre();
         }else if(material == Material.IRON_ORE){
             setIronOre();
         }else if(material == Material.GOLD_ORE){
@@ -21,6 +23,8 @@ public class PlaceMaterialElsewhere {
             setLapisOre();
         }else if(material == Material.DEEPSLATE_DIAMOND_ORE){
             setDiamondOre();
+        }else if(material == Material.DEEPSLATE_EMERALD_ORE){
+            setEmeraldOre();
         }
     }
     private void setCoalOre(){
@@ -29,6 +33,16 @@ public class PlaceMaterialElsewhere {
         for(Location loc : locations){
             if(loc.getBlock().getType() == Material.COBBLESTONE){
                 loc.getBlock().setType(Material.COAL_ORE);
+                break;
+            }
+        }
+    }
+    private void setCopperOre(){
+        List<Location> locations = (List<Location>) CavesOresGenerator.locations.getList("copper");
+        Collections.shuffle(locations);
+        for(Location loc : locations){
+            if(loc.getBlock().getType() == Material.COBBLESTONE){
+                loc.getBlock().setType(Material.COPPER_ORE);
                 break;
             }
         }
@@ -81,6 +95,16 @@ public class PlaceMaterialElsewhere {
         for(Location loc : locations){
             if(loc.getBlock().getType() == Material.COBBLED_DEEPSLATE){
                 loc.getBlock().setType(Material.DEEPSLATE_DIAMOND_ORE);
+                break;
+            }
+        }
+    }
+    private void setEmeraldOre(){
+        List<Location> locations = (List<Location>) CavesOresGenerator.locations.getList("emerald");
+        Collections.shuffle(locations);
+        for(Location loc : locations){
+            if(loc.getBlock().getType() == Material.COBBLED_DEEPSLATE){
+                loc.getBlock().setType(Material.DEEPSLATE_EMERALD_ORE);
                 break;
             }
         }

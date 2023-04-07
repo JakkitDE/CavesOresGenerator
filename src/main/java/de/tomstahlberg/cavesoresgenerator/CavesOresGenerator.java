@@ -1,6 +1,7 @@
 package de.tomstahlberg.cavesoresgenerator;
 
 import de.tomstahlberg.cavesoresgenerator.commands.Main;
+import de.tomstahlberg.cavesoresgenerator.events.BlockedEvents;
 import de.tomstahlberg.cavesoresgenerator.events.PlayerBlockBreak;
 import de.tomstahlberg.cavesoresgenerator.events.ToggleBlockBreak;
 import de.tomstahlberg.cavesoresgenerator.events.ToggleBlockBreakSneaking;
@@ -34,6 +35,7 @@ public final class CavesOresGenerator extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ToggleBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new ToggleBlockBreakSneaking(), this);
         getServer().getPluginManager().registerEvents(new PlayerBlockBreak(), this);
+        getServer().getPluginManager().registerEvents(new BlockedEvents(), this);
         getServer().getPluginCommand("cog").setExecutor(new Main());
         getServer().getPluginCommand("cog").setTabCompleter(new Main());
     }

@@ -17,6 +17,8 @@ public class Main implements CommandExecutor, TabCompleter {
             if(args.length >= 1){
                 if(args[0].equalsIgnoreCase("toggle")){
                     new ToggleCommand((Player) commandSender);
+                }else if(args[0].equalsIgnoreCase("save")){
+                    new SaveCommand((Player) commandSender);
                 }
             }
         }else{
@@ -32,6 +34,9 @@ public class Main implements CommandExecutor, TabCompleter {
         if(args.length == 1){
             if(commandSender.hasPermission("cavesoresgenerator.toggle") || commandSender.isOp()){
                 argsList.add("toggle");
+            }
+            if(commandSender.hasPermission("cavesoresgenerator.save") || commandSender.isOp()){
+                argsList.add("save");
             }
         }
         return argsList;

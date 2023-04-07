@@ -44,6 +44,18 @@ public class ToggleBlockBreakSneaking implements Listener {
             i++;
         }
 
+        List<Location> copperLocations;
+        try{
+            copperLocations = (List<Location>) CavesOresGenerator.locations.getList("copper");
+        }catch(Exception e){
+            copperLocations = new ArrayList<Location>();
+        }
+        if(copperLocations.contains(loc)){
+            copperLocations.remove(loc);
+            CavesOresGenerator.locations.set("copper", copperLocations);
+            i++;
+        }
+
 
         List<Location> ironLocations;
         try{
@@ -106,6 +118,18 @@ public class ToggleBlockBreakSneaking implements Listener {
         if(diamondLocations.contains(loc)){
             diamondLocations.remove(loc);
             CavesOresGenerator.locations.set("diamond", diamondLocations);
+            i++;
+        }
+
+        List<Location> emeraldLocations;
+        try{
+            emeraldLocations = (List<Location>) CavesOresGenerator.locations.getList("emerald");
+        }catch(Exception e){
+            emeraldLocations = new ArrayList<Location>();
+        }
+        if(emeraldLocations.contains(loc)){
+            emeraldLocations.remove(loc);
+            CavesOresGenerator.locations.set("emerald", emeraldLocations);
             i++;
         }
 

@@ -9,17 +9,24 @@ import java.util.List;
 
 public class Shuffle {
     private List<Location> coalLocations;
+    private List<Location> copperLocations;
     private List<Location> ironLocations;
     private List<Location> goldLocations;
     private List<Location> redstoneLocations;
     private List<Location> lapisLocations;
     private List<Location> diamondLocations;
+    private List<Location> emeraldLocations;
     public Shuffle(){
         //fill Lists
         try{
             this.coalLocations = (List<Location>) CavesOresGenerator.locations.getList("coal");
         }catch(Exception e){
             this.coalLocations = new ArrayList<Location>();
+        }
+        try{
+            this.copperLocations = (List<Location>) CavesOresGenerator.locations.getList("copper");
+        }catch(Exception e){
+            this.copperLocations = new ArrayList<Location>();
         }
         try{
             this.ironLocations = (List<Location>) CavesOresGenerator.locations.getList("iron");
@@ -46,6 +53,11 @@ public class Shuffle {
         }catch(Exception e){
             this.diamondLocations = new ArrayList<Location>();
         }
+        try{
+            this.emeraldLocations = (List<Location>) CavesOresGenerator.locations.getList("emerald");
+        }catch(Exception e){
+            this.emeraldLocations = new ArrayList<Location>();
+        }
 
     }
     public void setByChance(){
@@ -53,6 +65,13 @@ public class Shuffle {
         for(Location loc : coalLocations){
             if(getRandomBoolean(5.0f) == true){
                 loc.getBlock().setType(Material.COAL_ORE);
+            }else{
+                loc.getBlock().setType(Material.COBBLESTONE);
+            }
+        }
+        for(Location loc : copperLocations){
+            if(getRandomBoolean(2.0f) == true){
+                loc.getBlock().setType(Material.COPPER_ORE);
             }else{
                 loc.getBlock().setType(Material.COBBLESTONE);
             }
@@ -92,11 +111,21 @@ public class Shuffle {
                 loc.getBlock().setType(Material.COBBLED_DEEPSLATE);
             }
         }
+        for(Location loc : emeraldLocations){
+            if(getRandomBoolean(0.1f) == true){
+                loc.getBlock().setType(Material.DEEPSLATE_EMERALD_ORE);
+            }else{
+                loc.getBlock().setType(Material.COBBLED_DEEPSLATE);
+            }
+        }
     }
     public void setAll(){
         //set all ores to their locations to better toggle
         for(Location loc : coalLocations){
             loc.getBlock().setType(Material.COAL_ORE);
+        }
+        for(Location loc : copperLocations){
+            loc.getBlock().setType(Material.COPPER_ORE);
         }
         for(Location loc : ironLocations){
             loc.getBlock().setType(Material.IRON_ORE);
@@ -112,6 +141,9 @@ public class Shuffle {
         }
         for(Location loc : diamondLocations){
             loc.getBlock().setType(Material.DEEPSLATE_DIAMOND_ORE);
+        }
+        for(Location loc : emeraldLocations){
+            loc.getBlock().setType(Material.DEEPSLATE_EMERALD_ORE);
         }
     }
     private boolean getRandomBoolean(float probability) {
