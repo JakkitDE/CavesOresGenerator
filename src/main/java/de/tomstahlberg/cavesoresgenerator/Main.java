@@ -1,10 +1,12 @@
 package de.tomstahlberg.cavesoresgenerator;
 
 import de.tomstahlberg.cavesoresgenerator.events.BlockedEvents;
-import de.tomstahlberg.cavesoresgenerator.events.CaveTools.BlockedEventsInCaves;
+import de.tomstahlberg.cavesoresgenerator.events.cavetools.BlockedEventsInCaves;
 import de.tomstahlberg.cavesoresgenerator.events.PlayerBlockBreak;
 import de.tomstahlberg.cavesoresgenerator.events.ToggleBlockBreak;
 import de.tomstahlberg.cavesoresgenerator.events.ToggleBlockBreakSneaking;
+import de.tomstahlberg.cavesoresgenerator.events.physics.BlockFromTo;
+import de.tomstahlberg.cavesoresgenerator.events.physics.BlockPhysics;
 import de.tomstahlberg.cavesoresgenerator.functions.ConfigFunction;
 import de.tomstahlberg.cavesoresgenerator.functions.Locations;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -35,12 +37,19 @@ public final class Main extends JavaPlugin {
         locations = locationsConfigurator.loadConfiguration();
 
         config = new ConfigFunction(plugin);
+        try {
+            config.saveConfig();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         getServer().getPluginManager().registerEvents(new ToggleBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new ToggleBlockBreakSneaking(), this);
         getServer().getPluginManager().registerEvents(new PlayerBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new BlockedEvents(), this);
         getServer().getPluginManager().registerEvents(new BlockedEventsInCaves(), this);
+        getServer().getPluginManager().registerEvents(new BlockFromTo(), this);
+        getServer().getPluginManager().registerEvents(new BlockPhysics(), this);
 
         getServer().getPluginCommand("cog").setExecutor(new de.tomstahlberg.cavesoresgenerator.commands.Main());
         getServer().getPluginCommand("cog").setTabCompleter(new de.tomstahlberg.cavesoresgenerator.commands.Main());

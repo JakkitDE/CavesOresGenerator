@@ -1,4 +1,4 @@
-package de.tomstahlberg.cavesoresgenerator.events.CaveTools;
+package de.tomstahlberg.cavesoresgenerator.events.cavetools;
 
 import de.tomstahlberg.cavesoresgenerator.Main;
 import org.bukkit.ChatColor;
@@ -6,7 +6,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
