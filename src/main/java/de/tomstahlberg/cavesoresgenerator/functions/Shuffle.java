@@ -1,6 +1,6 @@
 package de.tomstahlberg.cavesoresgenerator.functions;
 
-import de.tomstahlberg.cavesoresgenerator.CavesOresGenerator;
+import de.tomstahlberg.cavesoresgenerator.Main;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
@@ -19,42 +19,42 @@ public class Shuffle {
     public Shuffle(){
         //fill Lists
         try{
-            this.coalLocations = (List<Location>) CavesOresGenerator.locations.getList("coal");
+            this.coalLocations = (List<Location>) Main.locations.getList("coal");
         }catch(Exception e){
             this.coalLocations = new ArrayList<Location>();
         }
         try{
-            this.copperLocations = (List<Location>) CavesOresGenerator.locations.getList("copper");
+            this.copperLocations = (List<Location>) Main.locations.getList("copper");
         }catch(Exception e){
             this.copperLocations = new ArrayList<Location>();
         }
         try{
-            this.ironLocations = (List<Location>) CavesOresGenerator.locations.getList("iron");
+            this.ironLocations = (List<Location>) Main.locations.getList("iron");
         }catch(Exception e){
             this.ironLocations = new ArrayList<Location>();
         }
         try{
-            this.goldLocations = (List<Location>) CavesOresGenerator.locations.getList("gold");
+            this.goldLocations = (List<Location>) Main.locations.getList("gold");
         }catch(Exception e){
             this.goldLocations = new ArrayList<Location>();
         }
         try{
-            this.redstoneLocations = (List<Location>) CavesOresGenerator.locations.getList("redstone");
+            this.redstoneLocations = (List<Location>) Main.locations.getList("redstone");
         }catch(Exception e){
             this.redstoneLocations = new ArrayList<Location>();
         }
         try{
-            this.lapisLocations = (List<Location>) CavesOresGenerator.locations.getList("lapis");
+            this.lapisLocations = (List<Location>) Main.locations.getList("lapis");
         }catch(Exception e){
             this.lapisLocations = new ArrayList<Location>();
         }
         try{
-            this.diamondLocations = (List<Location>) CavesOresGenerator.locations.getList("diamond");
+            this.diamondLocations = (List<Location>) Main.locations.getList("diamond");
         }catch(Exception e){
             this.diamondLocations = new ArrayList<Location>();
         }
         try{
-            this.emeraldLocations = (List<Location>) CavesOresGenerator.locations.getList("emerald");
+            this.emeraldLocations = (List<Location>) Main.locations.getList("emerald");
         }catch(Exception e){
             this.emeraldLocations = new ArrayList<Location>();
         }
@@ -63,56 +63,56 @@ public class Shuffle {
     public void setByChance(){
         //shuffle
         for(Location loc : coalLocations){
-            if(getRandomBoolean(5.0f) == true){
+            if(getRandomBoolean(Main.config.getCoalValue()) == true){
                 loc.getBlock().setType(Material.COAL_ORE);
             }else{
                 loc.getBlock().setType(Material.COBBLESTONE);
             }
         }
         for(Location loc : copperLocations){
-            if(getRandomBoolean(2.0f) == true){
+            if(getRandomBoolean(Main.config.getCopperValue()) == true){
                 loc.getBlock().setType(Material.COPPER_ORE);
             }else{
                 loc.getBlock().setType(Material.COBBLESTONE);
             }
         }
         for(Location loc : ironLocations){
-            if(getRandomBoolean(2.0f) == true){
+            if(getRandomBoolean(Main.config.getIronValue()) == true){
                 loc.getBlock().setType(Material.IRON_ORE);
             }else{
                 loc.getBlock().setType(Material.ANDESITE);
             }
         }
         for(Location loc : goldLocations){
-            if(getRandomBoolean(0.8f) == true){
+            if(getRandomBoolean(Main.config.getGoldValue()) == true){
                 loc.getBlock().setType(Material.GOLD_ORE);
             }else{
                 loc.getBlock().setType(Material.ANDESITE);
             }
         }
         for(Location loc : redstoneLocations){
-            if(getRandomBoolean(0.6f) == true){
+            if(getRandomBoolean(Main.config.getRedstoneValue()) == true){
                 loc.getBlock().setType(Material.REDSTONE_ORE);
             }else{
                 loc.getBlock().setType(Material.GRANITE);
             }
         }
         for(Location loc : lapisLocations){
-            if(getRandomBoolean(0.6f) == true){
+            if(getRandomBoolean(Main.config.getLapisValue()) == true){
                 loc.getBlock().setType(Material.DEEPSLATE_LAPIS_ORE);
             }else{
                 loc.getBlock().setType(Material.DEEPSLATE_BRICKS);
             }
         }
         for(Location loc : diamondLocations){
-            if(getRandomBoolean(0.2f) == true){
+            if(getRandomBoolean(Main.config.getDiamondValue()) == true){
                 loc.getBlock().setType(Material.DEEPSLATE_DIAMOND_ORE);
             }else{
                 loc.getBlock().setType(Material.COBBLED_DEEPSLATE);
             }
         }
         for(Location loc : emeraldLocations){
-            if(getRandomBoolean(0.1f) == true){
+            if(getRandomBoolean(Main.config.getEmeraldValue()) == true){
                 loc.getBlock().setType(Material.DEEPSLATE_EMERALD_ORE);
             }else{
                 loc.getBlock().setType(Material.COBBLED_DEEPSLATE);

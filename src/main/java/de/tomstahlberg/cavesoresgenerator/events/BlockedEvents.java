@@ -1,13 +1,12 @@
 package de.tomstahlberg.cavesoresgenerator.events;
 
-import de.tomstahlberg.cavesoresgenerator.CavesOresGenerator;
+import de.tomstahlberg.cavesoresgenerator.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 
 public class BlockedEvents implements Listener {
 
@@ -31,8 +30,8 @@ public class BlockedEvents implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event){
         Player player = event.getPlayer();
-        if(event.getPlayer().getWorld().getName().equalsIgnoreCase("Mine")){
-            if(CavesOresGenerator.editMode == true){
+        if(event.getPlayer().getWorld().getName().equalsIgnoreCase(Main.config.getWorld())){
+            if(Main.editMode == true){
                 if(player.hasPermission("cavesoresgenerator.edit") || player.isOp()){
                     event.setCancelled(false);
                 }else{

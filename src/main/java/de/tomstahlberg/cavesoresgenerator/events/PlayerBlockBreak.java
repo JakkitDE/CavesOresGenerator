@@ -1,6 +1,6 @@
 package de.tomstahlberg.cavesoresgenerator.events;
 
-import de.tomstahlberg.cavesoresgenerator.CavesOresGenerator;
+import de.tomstahlberg.cavesoresgenerator.Main;
 import de.tomstahlberg.cavesoresgenerator.functions.BlockResetTimer;
 import de.tomstahlberg.cavesoresgenerator.functions.CheckForLocationBlock;
 import de.tomstahlberg.cavesoresgenerator.functions.PlaceMaterialElsewhere;
@@ -9,15 +9,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class PlayerBlockBreak implements Listener {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event){
         Player player = event.getPlayer();
-        if(event.getBlock().getLocation().getWorld().getName().equalsIgnoreCase("Mine")){
-            if(CavesOresGenerator.editMode == false){
+        if(event.getBlock().getLocation().getWorld().getName().equalsIgnoreCase(Main.config.getWorld())){
+            if(Main.editMode == false){
                 Material materialToPlace = Material.AIR;
                 if(event.getBlock().getType() == Material.COAL_ORE){
                     //event.getBlock().getLocation().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(Material.COAL));
@@ -127,7 +126,7 @@ public class PlayerBlockBreak implements Listener {
         player.playSound(player.getLocation(), Sound.BLOCK_AMETHYST_CLUSTER_HIT, 0.5F, 1F);
     }
     private void setMaterial(Location loc, Material material){
-        Bukkit.getScheduler().runTask(CavesOresGenerator.plugin, new Runnable() {
+        Bukkit.getScheduler().runTask(Main.plugin, new Runnable() {
             @Override
             public void run() {
                 loc.getBlock().setType(material);

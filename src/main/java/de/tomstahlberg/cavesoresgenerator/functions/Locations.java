@@ -1,6 +1,6 @@
 package de.tomstahlberg.cavesoresgenerator.functions;
 
-import de.tomstahlberg.cavesoresgenerator.CavesOresGenerator;
+import de.tomstahlberg.cavesoresgenerator.Main;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -14,7 +14,7 @@ public class Locations {
     private File file;
     FileConfiguration locations;
     public Locations() throws IOException {
-        file = new File(CavesOresGenerator.plugin.getDataFolder(), "locations.yml");
+        file = new File(Main.plugin.getDataFolder(), "locations.yml");
         if(file.exists()){
             try{
                 this.locations = YamlConfiguration.loadConfiguration(file);
@@ -27,7 +27,7 @@ public class Locations {
     }
 
     public Locations(FileConfiguration config) throws IOException {
-        file = new File(CavesOresGenerator.plugin.getDataFolder(), "locations.yml");
+        file = new File(Main.plugin.getDataFolder(), "locations.yml");
         this.locations = config;
     }
     public FileConfiguration loadConfiguration(){

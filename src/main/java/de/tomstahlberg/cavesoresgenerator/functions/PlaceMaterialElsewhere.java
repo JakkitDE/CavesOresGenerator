@@ -1,6 +1,6 @@
 package de.tomstahlberg.cavesoresgenerator.functions;
 
-import de.tomstahlberg.cavesoresgenerator.CavesOresGenerator;
+import de.tomstahlberg.cavesoresgenerator.Main;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
@@ -28,7 +28,7 @@ public class PlaceMaterialElsewhere {
         }
     }
     private void setCoalOre(){
-        List<Location> locations = (List<Location>) CavesOresGenerator.locations.getList("coal");
+        List<Location> locations = (List<Location>) Main.locations.getList("coal");
         Collections.shuffle(locations);
         for(Location loc : locations){
             if(loc.getBlock().getType() == Material.COBBLESTONE){
@@ -38,7 +38,7 @@ public class PlaceMaterialElsewhere {
         }
     }
     private void setCopperOre(){
-        List<Location> locations = (List<Location>) CavesOresGenerator.locations.getList("copper");
+        List<Location> locations = (List<Location>) Main.locations.getList("copper");
         Collections.shuffle(locations);
         for(Location loc : locations){
             if(loc.getBlock().getType() == Material.COBBLESTONE){
@@ -48,7 +48,7 @@ public class PlaceMaterialElsewhere {
         }
     }
     private void setIronOre(){
-        List<Location> locations = (List<Location>) CavesOresGenerator.locations.getList("iron");
+        List<Location> locations = (List<Location>) Main.locations.getList("iron");
         Collections.shuffle(locations);
         for(Location loc : locations){
             if(loc.getBlock().getType() == Material.ANDESITE){
@@ -58,7 +58,7 @@ public class PlaceMaterialElsewhere {
         }
     }
     private void setGoldOre(){
-        List<Location> locations = (List<Location>) CavesOresGenerator.locations.getList("gold");
+        List<Location> locations = (List<Location>) Main.locations.getList("gold");
         Collections.shuffle(locations);
         for(Location loc : locations){
             if(loc.getBlock().getType() == Material.ANDESITE){
@@ -68,7 +68,7 @@ public class PlaceMaterialElsewhere {
         }
     }
     private void setRedstoneOre(){
-        List<Location> locations = (List<Location>) CavesOresGenerator.locations.getList("redstone");
+        List<Location> locations = (List<Location>) Main.locations.getList("redstone");
         Collections.shuffle(locations);
         for(Location loc : locations){
             if(loc.getBlock().getType() == Material.GRANITE){
@@ -79,7 +79,7 @@ public class PlaceMaterialElsewhere {
     }
 
     private void setLapisOre(){
-        List<Location> locations = (List<Location>) CavesOresGenerator.locations.getList("lapis");
+        List<Location> locations = (List<Location>) Main.locations.getList("lapis");
         Collections.shuffle(locations);
         for(Location loc : locations){
             if(loc.getBlock().getType() == Material.DEEPSLATE_BRICKS){
@@ -90,7 +90,7 @@ public class PlaceMaterialElsewhere {
     }
 
     private void setDiamondOre(){
-        List<Location> locations = (List<Location>) CavesOresGenerator.locations.getList("diamond");
+        List<Location> locations = (List<Location>) Main.locations.getList("diamond");
         Collections.shuffle(locations);
         for(Location loc : locations){
             if(loc.getBlock().getType() == Material.COBBLED_DEEPSLATE){
@@ -100,7 +100,7 @@ public class PlaceMaterialElsewhere {
         }
     }
     private void setEmeraldOre(){
-        List<Location> locations = (List<Location>) CavesOresGenerator.locations.getList("emerald");
+        List<Location> locations = (List<Location>) Main.locations.getList("emerald");
         Collections.shuffle(locations);
         for(Location loc : locations){
             if(loc.getBlock().getType() == Material.COBBLED_DEEPSLATE){

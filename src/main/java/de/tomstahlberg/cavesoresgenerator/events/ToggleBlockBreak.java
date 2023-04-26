@@ -1,6 +1,6 @@
 package de.tomstahlberg.cavesoresgenerator.events;
 
-import de.tomstahlberg.cavesoresgenerator.CavesOresGenerator;
+import de.tomstahlberg.cavesoresgenerator.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -19,7 +19,7 @@ public class ToggleBlockBreak implements Listener {
     public void onPlayerBlockBreak (BlockBreakEvent event){
         if(!event.getPlayer().isSneaking()){
             Player player = event.getPlayer();
-            if(CavesOresGenerator.editMode == true){
+            if(Main.editMode == true){
                 if(player.hasPermission("cavesoresgenerator.edit") || player.isOp()){
                     if(player.getInventory().getItemInMainHand().getType() == Material.COAL_ORE){
                         insertData(player,"coal", event.getBlock().getLocation());
@@ -61,10 +61,10 @@ public class ToggleBlockBreak implements Listener {
     }
 
     private void insertData(Player player, String type, Location loc){
-        List<Location> locationsList = new ArrayList<Location>((Collection<? extends Location>) CavesOresGenerator.locations.getList(type));
+        List<Location> locationsList = new ArrayList<Location>((Collection<? extends Location>) Main.locations.getList(type));
         if(!locationsList.contains(loc)){
             locationsList.add(loc);
-            CavesOresGenerator.locations.set(type, locationsList);
+            Main.locations.set(type, locationsList);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&6&lGolden&3&lSky &8x " +
                     "&e"+loc.getX()+
                     " "+loc.getY()+

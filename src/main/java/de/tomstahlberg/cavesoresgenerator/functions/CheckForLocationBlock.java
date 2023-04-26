@@ -1,8 +1,7 @@
 package de.tomstahlberg.cavesoresgenerator.functions;
 
-import de.tomstahlberg.cavesoresgenerator.CavesOresGenerator;
+import de.tomstahlberg.cavesoresgenerator.Main;
 import org.bukkit.Location;
-import org.bukkit.Material;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,42 +17,42 @@ public class CheckForLocationBlock {
     private List<Location> emeraldLocations;
     public CheckForLocationBlock(){
         try{
-            this.coalLocations = (List<Location>) CavesOresGenerator.locations.getList("coal");
+            this.coalLocations = (List<Location>) Main.locations.getList("coal");
         }catch(Exception e){
             this.coalLocations = new ArrayList<Location>();
         }
         try{
-            this.copperLocations = (List<Location>) CavesOresGenerator.locations.getList("copper");
+            this.copperLocations = (List<Location>) Main.locations.getList("copper");
         }catch(Exception e){
             this.copperLocations = new ArrayList<Location>();
         }
         try{
-            this.ironLocations = (List<Location>) CavesOresGenerator.locations.getList("iron");
+            this.ironLocations = (List<Location>) Main.locations.getList("iron");
         }catch(Exception e){
             this.ironLocations = new ArrayList<Location>();
         }
         try{
-            this.goldLocations = (List<Location>) CavesOresGenerator.locations.getList("gold");
+            this.goldLocations = (List<Location>) Main.locations.getList("gold");
         }catch(Exception e){
             this.goldLocations = new ArrayList<Location>();
         }
         try{
-            this.redstoneLocations = (List<Location>) CavesOresGenerator.locations.getList("redstone");
+            this.redstoneLocations = (List<Location>) Main.locations.getList("redstone");
         }catch(Exception e){
             this.redstoneLocations = new ArrayList<Location>();
         }
         try{
-            this.lapisLocations = (List<Location>) CavesOresGenerator.locations.getList("lapis");
+            this.lapisLocations = (List<Location>) Main.locations.getList("lapis");
         }catch(Exception e){
             this.lapisLocations = new ArrayList<Location>();
         }
         try{
-            this.diamondLocations = (List<Location>) CavesOresGenerator.locations.getList("diamond");
+            this.diamondLocations = (List<Location>) Main.locations.getList("diamond");
         }catch(Exception e){
             this.diamondLocations = new ArrayList<Location>();
         }
         try{
-            this.emeraldLocations = (List<Location>) CavesOresGenerator.locations.getList("emerald");
+            this.emeraldLocations = (List<Location>) Main.locations.getList("emerald");
         }catch(Exception e){
             this.emeraldLocations = new ArrayList<Location>();
         }

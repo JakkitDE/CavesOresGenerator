@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,12 @@ public class Main implements CommandExecutor, TabCompleter {
                     new ToggleCommand((Player) commandSender);
                 }else if(args[0].equalsIgnoreCase("save")){
                     new SaveCommand((Player) commandSender);
+                }else if (args[0].equalsIgnoreCase("reloadConfig")){
+                    try {
+                        new ReloadConfigCommand((Player) commandSender);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         }else{
@@ -37,6 +44,9 @@ public class Main implements CommandExecutor, TabCompleter {
             }
             if(commandSender.hasPermission("cavesoresgenerator.save") || commandSender.isOp()){
                 argsList.add("save");
+            }
+            if(commandSender.hasPermission("cavesoresgenerator.reloadconfig") || commandSender.isOp()){
+                argsList.add("reloadConfig");
             }
         }
         return argsList;

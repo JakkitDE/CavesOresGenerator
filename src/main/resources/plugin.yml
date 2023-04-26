@@ -1,6 +1,6 @@
 name: CavesOresGenerator
 version: '${project.version}'
-main: de.tomstahlberg.cavesoresgenerator.CavesOresGenerator
+main: de.tomstahlberg.cavesoresgenerator.Main
 api-version: 1.19
 commands:
   cog:
