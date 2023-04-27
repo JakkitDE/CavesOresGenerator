@@ -1,19 +1,18 @@
 package de.tomstahlberg.cavesoresgenerator;
 
-import de.tomstahlberg.cavesoresgenerator.events.BlockedEvents;
-import de.tomstahlberg.cavesoresgenerator.events.cavetools.BlockedEventsInCaves;
-import de.tomstahlberg.cavesoresgenerator.events.PlayerBlockBreak;
-import de.tomstahlberg.cavesoresgenerator.events.ToggleBlockBreak;
-import de.tomstahlberg.cavesoresgenerator.events.ToggleBlockBreakSneaking;
+import de.tomstahlberg.cavesoresgenerator.events.*;
 import de.tomstahlberg.cavesoresgenerator.events.physics.BlockFromTo;
 import de.tomstahlberg.cavesoresgenerator.events.physics.BlockPhysics;
 import de.tomstahlberg.cavesoresgenerator.functions.ConfigFunction;
 import de.tomstahlberg.cavesoresgenerator.functions.Locations;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Main extends JavaPlugin {
     public static FileConfiguration locations;
@@ -21,6 +20,8 @@ public final class Main extends JavaPlugin {
     public static Locations locationsConfigurator;
     public static Boolean editMode;
     public static ConfigFunction config;
+    public static List<Player> blockedMessagesList = new ArrayList<>();
+    public static List<Player> teleportedList = new ArrayList<>();
 
 
     @Override
@@ -47,7 +48,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ToggleBlockBreakSneaking(), this);
         getServer().getPluginManager().registerEvents(new PlayerBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new BlockedEvents(), this);
-        getServer().getPluginManager().registerEvents(new BlockedEventsInCaves(), this);
+        getServer().getPluginManager().registerEvents(new BlockedEventsInCave(), this);
         getServer().getPluginManager().registerEvents(new BlockFromTo(), this);
         getServer().getPluginManager().registerEvents(new BlockPhysics(), this);
 

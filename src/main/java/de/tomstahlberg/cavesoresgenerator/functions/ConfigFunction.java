@@ -1,6 +1,8 @@
 package de.tomstahlberg.cavesoresgenerator.functions;
 
+import de.tomstahlberg.cavesoresgenerator.Main;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -25,6 +27,7 @@ public class ConfigFunction {
             config.set("emerald", 7.0f);
             config.set("diamond", 7.0f);
             config.set("world", "Mine");
+            config.set("spawn_location", new Location(Main.plugin.getServer().getWorld("Mine"), 0.0,0.0,0.0));
         }else{
             this.config = YamlConfiguration.loadConfiguration(this.configFile);
         }
@@ -34,6 +37,9 @@ public class ConfigFunction {
     }
     public String getWorld(){
         return this.config.getString("world");
+    }
+    public Location getSpawnLocation(){
+        return this.config.getLocation("spawn_location");
     }
     public float getCoalValue(){
         return (float) this.config.getDouble("coal");
