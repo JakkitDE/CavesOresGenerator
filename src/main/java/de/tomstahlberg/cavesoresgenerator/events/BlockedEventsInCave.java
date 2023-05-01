@@ -28,27 +28,28 @@ public class BlockedEventsInCave implements Listener {
 
     @EventHandler
     public void useEnderpearl (PlayerInteractEvent event){
-        ItemStack mainHand = event.getPlayer().getInventory().getItemInMainHand();
-        ItemStack offHand = event.getPlayer().getInventory().getItemInOffHand();
-        Boolean cancel = false;
-        if( mainHand.getType() != null && mainHand.getType() == Material.ENDER_PEARL ||
-                mainHand.getType() != Material.AIR && mainHand.getType() == Material.ENDER_PEARL ||
-                offHand.getType() != null && offHand.getType() == Material.ENDER_PEARL ||
-                offHand.getType() != Material.AIR && offHand.getType() == Material.ENDER_PEARL){
-            cancel = true;
-        }
-        if(cancel == true){
-            Player player = event.getPlayer();
-            if(!(player.hasPermission("mine.access.bypass") || player.isOp())){
-                if(!Main.blockedMessagesList.contains(player)){
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&6&lGolden&3&lSky &8x &cDu kannst in der Mine keine Enderperlen benutzen."));
-                    Main.blockedMessagesList.add(player);
-                    startMessageRemovalTimer(player);
+        if(event.getPlayer().getLocation().getWorld().getName().equalsIgnoreCase(Main.config.getWorld())){
+            ItemStack mainHand = event.getPlayer().getInventory().getItemInMainHand();
+            ItemStack offHand = event.getPlayer().getInventory().getItemInOffHand();
+            Boolean cancel = false;
+            if( mainHand.getType() != null && mainHand.getType() == Material.ENDER_PEARL ||
+                    mainHand.getType() != Material.AIR && mainHand.getType() == Material.ENDER_PEARL ||
+                    offHand.getType() != null && offHand.getType() == Material.ENDER_PEARL ||
+                    offHand.getType() != Material.AIR && offHand.getType() == Material.ENDER_PEARL){
+                cancel = true;
+            }
+            if(cancel == true){
+                Player player = event.getPlayer();
+                if(!(player.hasPermission("mine.access.bypass") || player.isOp())){
+                    if(!Main.blockedMessagesList.contains(player)){
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&6&lGolden&3&lSky &8x &cDu kannst in der Mine keine Enderperlen benutzen."));
+                        Main.blockedMessagesList.add(player);
+                        startMessageRemovalTimer(player);
+                    }
+                    event.setCancelled(true);
                 }
-                event.setCancelled(true);
             }
         }
-
     }
     private void startMessageRemovalTimer(Player player){
         Bukkit.getScheduler().runTaskLater(Main.plugin, new Runnable() {

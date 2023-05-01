@@ -16,15 +16,18 @@ public class ToggleBlockBreakSneaking implements Listener {
      @EventHandler
      public void onPlayerBlockBreakWhileSneaking(BlockBreakEvent event){
          if(event.getPlayer().isSneaking()){
-             Player player = event.getPlayer();
-             if(Main.editMode == true){
-                 if(player.hasPermission("cavesoresgenerator.edit") || player.isOp()){
-                     removeLocation(player, event.getBlock().getLocation());
-                 }else{
-                     player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&6&lGolden&3&lSky &8x &cKeine Rechte."));
+             if(event.getBlock().getLocation().getWorld().getName().equalsIgnoreCase(Main.config.getWorld())){
+                 Player player = event.getPlayer();
+                 if(Main.editMode == true){
+                     if(player.hasPermission("cavesoresgenerator.edit") || player.isOp()){
+                         removeLocation(player, event.getBlock().getLocation());
+                     }else{
+                         player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&6&lGolden&3&lSky &8x &cKeine Rechte."));
+                     }
+                     event.setCancelled(true);
                  }
-                 event.setCancelled(true);
              }
+
          }
      }
 
